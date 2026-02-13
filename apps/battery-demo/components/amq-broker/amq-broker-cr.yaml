@@ -6,6 +6,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
     app.kubernetes.io/part-of: IoT-Hub
+    app: mqtt-broker
     version: "1.0"
 spec:
   acceptors:
