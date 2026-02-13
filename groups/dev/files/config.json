@@ -1,4 +1,8 @@
 {
     "BATTERY_METRICS_WS_ENDPOINT": "wss://mqtt2ws-battery-demo.apps.ocp4.rhlab.de/battery/metrics/",
-    "OPEN_AI_API_KEY": "my-key"
+    "OPEN_AI_API_KEY": "my-key",
+    "STRESS_DETECTION_AI_API_ENDPOINT": "https://stress-detection-ai-edge-project.domain/",
+    "TIME_TO_FAILURE_AI_API_ENDPOINT": "https://time-to-failure-ai-edge-project.domain/",
+    "BATTERY_SIMULATION_API_ENDPOINT": "https://battery-simulation-battery-demo.apps.ocp4.rhlab.de/",
+    "AUTO_INFERENCE_INTERVAL_MS": 0
 }
