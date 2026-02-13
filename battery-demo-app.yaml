@@ -9,7 +9,7 @@ spec:
     namespace: ''
     server: https://kubernetes.default.svc
   source:
-    path: groups/dev
+    path: apps/battery-demo/groups/dev
     repoURL: https://github.com/ortwinschneider/ai-edge-battery-sim-gitops
     targetRevision: HEAD
   sources: []

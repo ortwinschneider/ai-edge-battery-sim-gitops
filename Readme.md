@@ -12,13 +12,13 @@
 
 ## Installation
 
-Create a new Argo application that points to `groups/dev`. It will install all the components in the `battery-demo` namespace
+### Install Minio Argo Application
 
 ````yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: battery-demo
+  name: minio
   namespace: openshift-gitops
 spec:
   destination:
@@ -26,7 +26,7 @@ spec:
     namespace: ''
     server: https://kubernetes.default.svc
   source:
-    path: groups/dev
+    path: apps/minio
     repoURL: https://github.com/ortwinschneider/ai-edge-battery-sim-gitops
     targetRevision: HEAD
   sources: []
@@ -40,7 +40,40 @@ spec:
 Install the argo app:
 
 ````shellscript
-oc apply -f argo-app.yaml -n openshift-gitops
+oc apply -f minio-app.yaml -n openshift-gitops
+````
+
+### Install Battery Demo Application
+
+Create a new Argo application that points to `apps/battery-demo/groups/dev`. It will install all the components in the `battery-demo` namespace
+
+````yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: battery-demo
+  namespace: openshift-gitops
+spec:
+  destination:
+    name: ''
+    namespace: ''
+    server: https://kubernetes.default.svc
+  source:
+    path: apps/battery-demo/groups/dev
+    repoURL: https://github.com/ortwinschneider/ai-edge-battery-sim-gitops
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+````
+
+Install the argo app:
+
+````shellscript
+oc apply -f battery-demo-app.yaml -n openshift-gitops
 ````
 
 ## Exploring the data in InfluxDB
@@ -54,8 +87,3 @@ from(bucket: "bms")
   |> range(start: -1h)
   |> filter(fn: (r) => r._measurement == "battery_data")
 ````
-
-## Troubleshooting
-
-It might be necessary to restart the `battery-simulation` pod when the AMQ broker is ready.
-Check the logs to see if the component is sending the data.
