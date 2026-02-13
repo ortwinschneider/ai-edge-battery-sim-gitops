@@ -11,6 +11,7 @@ metadata:
     app.kubernetes.io/name: data-ingester-jvm
     app.kubernetes.io/part-of: metrics-processors
     app.openshift.io/runtime: quarkus
+    version: "1.0"
 spec:
   replicas: 1
   selector:
@@ -21,6 +22,7 @@ spec:
       labels:
         app: data-ingester-jvm
         deployment: data-ingester-jvm
+        version: "1.0"
     spec:
       containers:
         - name: data-ingester-jvm

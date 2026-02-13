@@ -11,6 +11,7 @@ metadata:
     app.kubernetes.io/name: mqtt2ws
     app.kubernetes.io/part-of: metrics-processors
     app.openshift.io/runtime: quarkus
+    version: "1.0"
 spec:
   replicas: 1
   selector:
@@ -21,6 +22,7 @@ spec:
       labels:
         app: mqtt2ws
         deployment: mqtt2ws
+        version: "1.0"
     spec:
       containers:
         - name: mqtt2ws

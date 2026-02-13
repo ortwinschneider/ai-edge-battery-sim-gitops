@@ -11,6 +11,7 @@ metadata:
     app.kubernetes.io/name: influx-exporter
     app.kubernetes.io/part-of: data-store
     app.openshift.io/runtime: quarkus
+    version: "1.0"
 spec:
   replicas: 1
   selector:
@@ -21,6 +22,7 @@ spec:
       labels:
         app: influx-exporter
         deployment: influx-exporter
+        version: "1.0"
     spec:
       containers:
         - name: influx-exporter

@@ -12,6 +12,7 @@ metadata:
     app.kubernetes.io/name: battery-simulation
     app.kubernetes.io/part-of: battery-simulation
     app.openshift.io/runtime: quarkus
+    version: "1.0"
 spec:
   replicas: 1
   selector:
@@ -22,6 +23,7 @@ spec:
       labels:
         app: battery-simulation
         deployment: battery-simulation
+        version: "1.0"
     spec:
       containers:
         - name: battery-simulation

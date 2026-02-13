@@ -5,6 +5,7 @@ metadata:
     labels:
       app: influxdb
       app.kubernetes.io/part-of: data-store
+      version: "1.0"
     name: influxdb
 spec:
     replicas: 1
@@ -16,6 +17,7 @@ spec:
         metadata:
             labels:
                 app: influxdb
+                version: "1.0"
         spec:
             serviceAccountName: influxdb
             containers:
